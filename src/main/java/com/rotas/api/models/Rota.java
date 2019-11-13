@@ -2,22 +2,27 @@ package com.rotas.api.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="GERADORA")
-public class Geradora implements Serializable {
+@Table(name="ROTA")
+public class Rota implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
+		
 	
 	@Id
 	@Column(name = "ID")
@@ -25,7 +30,11 @@ public class Geradora implements Serializable {
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
 	
-	private String nome;	
+	private String nome;
+	
+	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+	@JoinColumn(name="ID_GERADORA")
+	private Geradora geradora;
 
 	public long getId() {
 		return id;
@@ -60,7 +69,7 @@ public class Geradora implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Geradora other = (Geradora) obj;
+		Rota other = (Rota) obj;
 		if (id != other.id)
 			return false;
 		if (nome == null) {
@@ -69,5 +78,5 @@ public class Geradora implements Serializable {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
-	}	
+	}
 }

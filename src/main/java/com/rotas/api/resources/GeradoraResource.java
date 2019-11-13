@@ -20,6 +20,7 @@ import com.rotas.api.repository.GeradoraRepository;
 public class GeradoraResource {
 	
 	@Autowired
+	//@Resource(name="geradoraRepository")
 	GeradoraRepository geradoraRepository;
 	
 	@GetMapping("/geradoras")
