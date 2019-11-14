@@ -1,4 +1,4 @@
-package com.rotas.resources;
+package com.rotas.api.resources;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rotas.models.Rota;
-import com.rotas.repository.RotaRepository;
+import com.rotas.api.models.Rota;
+import com.rotas.api.repository.RotaRepository;
 
 @RestController
 @RequestMapping(value = "/api")

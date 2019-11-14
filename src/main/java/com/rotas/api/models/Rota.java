@@ -1,4 +1,4 @@
-package com.rotas.models;
+package com.rotas.api.models;
 
 import java.io.Serializable;
 

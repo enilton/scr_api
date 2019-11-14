@@ -1,4 +1,4 @@
-package com.rotas.resources;
+package com.rotas.api.resources;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,40 +13,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rotas.models.Geradora;
-import com.rotas.repository.GeradoraRepository;
+import com.rotas.api.models.Geradora;
+import com.rotas.api.service.GeradoraService;
 
 @RestController
 @RequestMapping(value = "/api")
 public class GeradoraResource {
 	
-	@Autowired	
-	GeradoraRepository geradoraRepository;
+	@Autowired
+	private GeradoraService geradorasService;
 	
 	@GetMapping("/geradoras")
 	public List<Geradora> listarTodos(){
-		return geradoraRepository.findAll();
+		return geradorasService.findAll();
 	}
 	
 	@GetMapping("/geradora/{id}")
-    public Optional<Geradora> ObterPorId(@PathVariable(value = "id") long id)
+    public Geradora ObterPorId(@PathVariable(value = "id") long id)
     {
-        return geradoraRepository.findById(id);
+        return geradorasService.findById(id);
     }
 	
 	@PostMapping("/geradora")
 	public Geradora Salvar(@RequestBody Geradora geradora) {
-		return geradoraRepository.save(geradora);
+		return geradorasService.save(geradora);
 	}
 	
 	@DeleteMapping("/geradora/{id}")
     public void Remover(@PathVariable(value = "id") long id)
     {
-        geradoraRepository.deleteById(id);
+        geradorasService.deleteById(id);
     }
 	
 	@PutMapping("/geradora")
 	public Geradora Atualizar(@RequestBody Geradora geradora) {
-		return geradoraRepository.save(geradora);
+		return geradorasService.save(geradora);
 	}
 }
