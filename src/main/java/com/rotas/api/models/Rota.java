@@ -1,15 +1,14 @@
 package com.rotas.api.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -32,9 +31,8 @@ public class Rota implements Serializable {
 	
 	private String nome;
 	
-	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_GERADORA")
-	private Geradora geradora;
+	@OneToMany(mappedBy = "rota", cascade = {CascadeType.PERSIST})
+	private List<Geradora> geradora;
 
 	public long getId() {
 		return id;
