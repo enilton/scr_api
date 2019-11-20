@@ -28,18 +28,18 @@ public class GeradoraResource {
 	}
 	
 	@GetMapping("/geradora/{id}")
-    public Geradora ObterPorId(@PathVariable(value = "id") long id)
+    public Geradora ObterPorId(final @PathVariable(value = "id") Long id)
     {
         return geradorasService.findById(id);
     }
 	
 	@PostMapping("/geradora")
-	public Geradora Salvar(@RequestBody Geradora geradora) {
+	public Geradora Salvar(final @RequestBody Geradora geradora) {
 		return geradorasService.save(geradora);
 	}
 	
 	@DeleteMapping("/geradora/{id}")
-    public void Remover(@PathVariable(value = "id") long id)
+    public void Remover(final @PathVariable(value = "id") Long id)
     {
         geradorasService.deleteById(id);
     }
