@@ -23,14 +23,13 @@ public class Geradora implements Serializable {
 	
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue
 	private long id;
 	
 	private String nome;	
 	
 	@ManyToOne
-    @JoinColumn(name = "fk_tb_geradora", nullable = false)
+    @JoinColumn(name = "fk_tb_geradora", nullable = true)
     private Rota rota;
 
 	public long getId() {
